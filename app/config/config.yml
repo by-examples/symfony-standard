@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -15,9 +15,16 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
-    default_locale:  "%locale%"
+    default_locale:  en
     trusted_proxies: ~
-    session:         ~
+
+#    session:         ~
+#http://symfony.com/doc/current/cookbook/session/sessions_directory.html
+#https://github.com/symfony/symfony/issues/7885
+    session:
+        handler_id: session.handler.native_file
+        save_path: "/tmp/sessions"
+
     fragments:       ~
     http_method_override: true
 
@@ -67,3 +74,8 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+fos_user:
+    db_driver:      orm
+    firewall_name:  main
+    user_class:     My\UserBundle\Entity\User
