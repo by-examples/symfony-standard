@@ -4,8 +4,11 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,11 +17,46 @@ security:
             security: false
 
         main:
-            anonymous: ~
-            # activate different ways to authenticate
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+            pattern: ^/
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            form_login:
+                provider:                       fos_userbundle
+                csrf_provider:                  form.csrf_provider
+                login_path:                     /login
+                use_forward:                    false
+                check_path:                     /login_check
+                post_only:                      true
+                always_use_default_target_path: false
+                default_target_path:            /
+                target_path_parameter:          _target_path
+                use_referer:                    false
+                failure_path:                   null
+                failure_forward:                false
+                username_parameter:             _username
+                password_parameter:             _password
+                csrf_parameter:                 _csrf_token
+                intention:                      authenticate
+
+            #logout:
+            #    path:   /
+            #    target: _demo
+
+            logout:       true
+            anonymous:    true
+
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+        - { path: ^/_wdt, roles: 'IS_AUTHENTICATED_ANONYMOUSLY' }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
