@@ -5,6 +5,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "gajdaw/symfony"
     config.vm.hostname = "abc.example.net"
 
+    config.vm.provider :virtualbox do |v|
+        v.customize ["modifyvm", :id, "--memory", 1024]
+    end
+
     require 'ffi'
 
     if FFI::Platform::IS_WINDOWS
