@@ -18,7 +18,7 @@ security:
                 check_path:                     /login_check
                 post_only:                      true
                 always_use_default_target_path: false
-                default_target_path:            /
+                default_target_path:            /admin
                 target_path_parameter:          _target_path
                 use_referer:                    false
                 failure_path:                   null
