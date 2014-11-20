@@ -15,7 +15,13 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('GajdawBDDTutorialAppRiversBundle:River')->findAll();
+
+        return array(
+            'entities' => $entities,
+        );
     }
 
     /**
