@@ -1,6 +1,5 @@
-#Feature: Web pages
-#
-#  Scenario: Hello world page
-#    Given I am on homepage
-#     Then the response status code should be 200
-#     Then I should see "That's it my friend!"
+Feature: I would like to...
+
+    Scenario: Homepage should be accessible
+      Given I am on homepage
+       Then I should see "The Longest Rivers in the World!"
