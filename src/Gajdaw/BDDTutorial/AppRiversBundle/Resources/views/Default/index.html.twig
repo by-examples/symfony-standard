@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>The Longest Rivers in the World!</h1>
+
+    <table class="records">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Length</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.length }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock body %}

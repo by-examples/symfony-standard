@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="my_user.example.class">My\UserBundle\Example</parameter>
+        <parameter key="gajdaw_bdd_tutorial_app_rivers.example.class">Gajdaw\BDDTutorial\AppRiversBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="my_user.example" class="%my_user.example.class%">
+        <service id="gajdaw_bdd_tutorial_app_rivers.example" class="%gajdaw_bdd_tutorial_app_rivers.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

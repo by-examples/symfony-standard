@@ -7,6 +7,20 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block login_logout_panel %}
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <p>Logged in as {{ app.user.username }}</p>
+                <p>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                </p>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">
+                    {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% endif %}
+        {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
