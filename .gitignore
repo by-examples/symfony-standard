@@ -9,3 +9,9 @@
 /vendor/
 /bin/
 /composer.phar
+/.vagrant/
+/.idea/
+/nbproject/
+/tmp/
+*.php~
+.DS_Store
