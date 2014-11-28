@@ -1,0 +1,27 @@
+language: php
+
+php:
+  - 5.5
+
+before_install:
+  - sudo pwd
+  - sudo apt-get update
+
+install:
+  - sudo apt-get install -y --force-yes puppet
+  - sudo mkdir -p /var/www
+  - sudo ln -s  "$(pwd)/web" /var/www/html
+  - sudo puppet apply puppet/modules/php-required-tools/manifests/init.pp
+  - sudo puppet apply puppet/modules/php5-latest/manifests/init.pp
+  - sudo /etc/init.d/apache2 restart
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+  - chmod -R 777 app/cache app/logs
+  - app/console cache:warmup --env=dev
+  - chmod -R 777 app/cache app/logs
+  - sleep 5
+
+script:
+  - bin/behat --stop-on-failure
