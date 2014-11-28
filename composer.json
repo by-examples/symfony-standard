@@ -31,6 +31,9 @@
         "behat/mink-goutte-driver": "~1.0"
 
     },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
