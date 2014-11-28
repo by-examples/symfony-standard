@@ -22,6 +22,7 @@
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "friendsofsymfony/user-bundle": "~1.3",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
+        "jms/serializer-bundle": "*",
 
         "behat/behat": "~3.0",
         "behat/mink": "~1.6@dev",
