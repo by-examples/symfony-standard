@@ -1,0 +1,98 @@
+Branches:
+    2.6.4/Full
+    2.6.4/Full.1
+    2.6.4/Full.2
+    2.6.4/Full.3
+
+
+1. Rebuild branches with components
+
+2. Orphan branch
+
+Create an orphan branch 2.6.4/Full for Symfony Standard v2.6.4
+
+git checkout --orphan 2.6.4/Full v2.6.4
+git commit -m "Symfony Standard v2.6.4"
+
+Creating a branch like symfony-standard-v2.6.4 for every release
+is pointless as --orphan will yield exactly the same result.
+
+
+3. Distribution branch
+
+Create distribution-full-2.6.4 branch (purpose: to create a bulb)
+This is a temporary branch.
+
+git checkout -b distribution-full-2.6.4 2.6.4/Full
+
+4. Cherry pick all the branches:
+
+Verify:
+    git rerere remaining
+maybe this command can be used to automate cherry-picking?
+
+git cherry-pick 2.6.4/Gitignore
+git cherry-pick 2.6.4/Cleanup
+git cherry-pick 2.6.4/Vagrant
+git cherry-pick 2.6.4/Speedup
+git cherry-pick 2.6.4/Error404
+git cherry-pick 2.6.4/Db
+git cherry-pick 2.6.4/Scripts
+git cherry-pick 2.6.4/DoctrineFixturesBundle
+git cherry-pick 2.6.4/FOSUserBundle
+
+git cherry-pick 2.6.4/Behat
+git cherry-pick 2.6.4/BehatInitialization
+git cherry-pick 2.6.4/Travis
+
+
+#git cherry-pick 2.6.4/StofDoctrineExtensions
+#git cherry-pick 2.6.4/Phpspec
+#git cherry-pick 2.6.4/JmsSerializerBundle
+
+5. Update dependencies:
+
+Remove bin directory:
+
+rm -rf bin
+rm composer.lock
+
+vagrant up
+vagrant ssh
+
+./initialize.bash
+
+composer self-update
+composer update
+
+6. Commit updated dependencies
+
+git snapshot "[STARTUP] Updated dependencies"
+
+7. Merge distribution-full-2.6.4 branch into 2.6.4/Full branch with a bulb
+
+git checkout 2.6.4/Full
+git merge --no-ff distribution-full-2.6.4
+
+Merge commit should have the caption:
+
+SymfonyAppStartup 2.6.4
+
+
+8. Remove distribution branch:
+
+git branch -D distribution-full-2.6.4
+
+=============================================
+
+
+10. View steps:
+
+https://github.com/angular/angular-phonecat/compare/step-2...step-3
+
+11. Usefull commands
+
+git branch | grep 2.6.4
+git branch --no-merged | grep 2.6.4
+
+

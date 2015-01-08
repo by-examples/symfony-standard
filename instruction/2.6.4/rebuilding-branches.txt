@@ -1,0 +1,45 @@
+Update from 2.6.3 to 2.6.4
+
+1. Update repo
+
+git checkout 2.7
+git fetch origin
+git rebase
+
+2. List branches to update
+
+git branch | grep 2.6.3
+
+2.6.3/Behat
+2.6.3/BehatInitialization
+2.6.3/Cleanup
+2.6.3/Db
+2.6.3/DoctrineFixturesBundle
+2.6.3/Error404
+2.6.3/FOSUserBundle
+2.6.3/Gitignore
+2.6.3/Instruction
+2.6.3/Scripts
+2.6.3/Speedup
+2.6.3/Travis
+2.6.3/Vagrant
+
+3. Update branches
+
+./dist-update-one-branch.bash 2.6.3 2.6.4 Behat
+./dist-update-one-branch.bash 2.6.3 2.6.4 BehatInitialization
+./dist-update-one-branch.bash 2.6.3 2.6.4 Cleanup
+./dist-update-one-branch.bash 2.6.3 2.6.4 Db
+./dist-update-one-branch.bash 2.6.3 2.6.4 DoctrineFixturesBundle
+./dist-update-one-branch.bash 2.6.3 2.6.4 Error404
+./dist-update-one-branch.bash 2.6.3 2.6.4 FOSUserBundle
+./dist-update-one-branch.bash 2.6.3 2.6.4 Gitignore
+./dist-update-one-branch.bash 2.6.3 2.6.4 Instruction
+./dist-update-one-branch.bash 2.6.3 2.6.4 Scripts
+./dist-update-one-branch.bash 2.6.3 2.6.4 Speedup
+./dist-update-one-branch.bash 2.6.3 2.6.4 Travis
+./dist-update-one-branch.bash 2.6.3 2.6.4 Vagrant
+
+4. Remove branches
+
+git branch | grep 2.6.4 | xargs git branch -D
