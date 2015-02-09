@@ -40,6 +40,16 @@ git branch | grep 2.6.3
 ./dist-update-one-branch.bash 2.6.3 2.6.4 Travis
 ./dist-update-one-branch.bash 2.6.3 2.6.4 Vagrant
 
+./dist-update-one-branch.bash 2.6.1 2.6.4 StofDoctrineExtensionsBundle
+./dist-update-one-branch.bash 2.6.1 2.6.4 Phpspec
+./dist-update-one-branch.bash 2.6.1 2.6.4 JmsSerializerBundle
+
+./dist-update-one-branch.bash 2.3 2.6.4 DoctrineMigrationsBundle
+./dist-update-one-branch.bash 2.3 2.6.4 JMSDebuggingBundle
+./dist-update-one-branch.bash 2.3 2.6.4 KnpMenuBundle
+./dist-update-one-branch.bash 2.3 2.6.4 KnpPaginatorBundle
+
+
 4. Remove branches
 
 git branch | grep 2.6.4 | xargs git branch -D

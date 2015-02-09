@@ -9,9 +9,9 @@ Branches:
 
 2. Orphan branch
 
-Create an orphan branch 2.6.4/Full for Symfony Standard v2.6.4
+Create an orphan branch 2.6.4/Full.1 for Symfony Standard v2.6.4
 
-git checkout --orphan 2.6.4/Full v2.6.4
+git checkout --orphan 2.6.4/Full.1 v2.6.4
 git commit -m "Symfony Standard v2.6.4"
 
 Creating a branch like symfony-standard-v2.6.4 for every release
@@ -23,7 +23,7 @@ is pointless as --orphan will yield exactly the same result.
 Create distribution-full-2.6.4 branch (purpose: to create a bulb)
 This is a temporary branch.
 
-git checkout -b distribution-full-2.6.4 2.6.4/Full
+git checkout -b distribution-full-2.6.4 2.6.4/Full.1
 
 4. Cherry pick all the branches:
 
@@ -46,9 +46,16 @@ git cherry-pick 2.6.4/BehatInitialization
 git cherry-pick 2.6.4/Travis
 
 
-#git cherry-pick 2.6.4/StofDoctrineExtensions
-#git cherry-pick 2.6.4/Phpspec
-#git cherry-pick 2.6.4/JmsSerializerBundle
+git cherry-pick 2.6.4/StofDoctrineExtensionsBundle
+git cherry-pick 2.6.4/Phpspec
+git cherry-pick 2.6.4/JmsSerializerBundle
+
+
+git cherry-pick 2.6.4/DoctrineMigrationsBundle
+git cherry-pick 2.6.4/JMSDebuggingBundle
+git cherry-pick 2.6.4/KnpMenuBundle
+git cherry-pick 2.6.4/KnpPaginatorBundle
+
 
 5. Update dependencies:
 
@@ -62,21 +69,23 @@ vagrant ssh
 
 ./initialize.bash
 
-composer self-update
+sudo composer self-update
 composer update
+
+bin/behat
 
 6. Commit updated dependencies
 
 git snapshot "[STARTUP] Updated dependencies"
 
-7. Merge distribution-full-2.6.4 branch into 2.6.4/Full branch with a bulb
+7. Merge distribution-full-2.6.4 branch into 2.6.4/Full.1 branch with a bulb
 
-git checkout 2.6.4/Full
+git checkout 2.6.4/Full.1
 git merge --no-ff distribution-full-2.6.4
 
 Merge commit should have the caption:
 
-SymfonyAppStartup 2.6.4
+SymfonyAppStartup 2.6.4.1
 
 
 8. Remove distribution branch:
