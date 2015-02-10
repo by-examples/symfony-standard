@@ -1,17 +1,14 @@
-Branches:
-    2.6.4/Full
-    2.6.4/Full.1
+Branch:
     2.6.4/Full.2
-    2.6.4/Full.3
 
 
 1. Rebuild branches with components
 
 2. Orphan branch
 
-Create an orphan branch 2.6.4/Full.1 for Symfony Standard v2.6.4
+Create an orphan branch 2.6.4/Full.2 for Symfony Standard v2.6.4
 
-git checkout --orphan 2.6.4/Full.1 v2.6.4
+git checkout --orphan 2.6.4/Full.2 v2.6.4
 git commit -m "Symfony Standard v2.6.4"
 
 Creating a branch like symfony-standard-v2.6.4 for every release
@@ -23,7 +20,7 @@ is pointless as --orphan will yield exactly the same result.
 Create distribution-full-2.6.4 branch (purpose: to create a bulb)
 This is a temporary branch.
 
-git checkout -b distribution-full-2.6.4 2.6.4/Full.1
+git checkout -b distribution-full-2.6.4 2.6.4/Full.2
 
 4. Cherry pick all the branches:
 
@@ -78,9 +75,9 @@ bin/behat
 
 git snapshot "[STARTUP] Updated dependencies"
 
-7. Merge distribution-full-2.6.4 branch into 2.6.4/Full.1 branch with a bulb
+7. Merge distribution-full-2.6.4 branch into 2.6.4/Full.2 branch with a bulb
 
-git checkout 2.6.4/Full.1
+git checkout 2.6.4/Full.2
 git merge --no-ff distribution-full-2.6.4
 
 Merge commit should have the caption:
