@@ -50,8 +50,11 @@ git cherry-pick 2.6.4/JmsSerializerBundle
 
 git cherry-pick 2.6.4/DoctrineMigrationsBundle
 git cherry-pick 2.6.4/JMSDebuggingBundle
+
 git cherry-pick 2.6.4/KnpMenuBundle
 git cherry-pick 2.6.4/KnpPaginatorBundle
+
+git cherry-pick 2.6.4/BraincraftedBootstrapBundle
 
 
 5. Update dependencies:
@@ -69,6 +72,7 @@ vagrant ssh
 sudo composer self-update
 composer update
 
+./reload.bash
 bin/behat
 
 6. Commit updated dependencies
@@ -82,7 +86,7 @@ git merge --no-ff distribution-full-2.6.4
 
 Merge commit should have the caption:
 
-SymfonyAppStartup 2.6.4.1
+SymfonyAppStartup 2.6.4.2
 
 
 8. Remove distribution branch:
