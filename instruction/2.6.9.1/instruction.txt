@@ -1,0 +1,109 @@
+Branch:
+    2.6.9/Full.1
+
+
+1. Rebuild branches with components
+
+2. Orphan branch
+
+Create an orphan branch 2.6.9/Full.1 for Symfony Standard v2.6.9
+
+git checkout --orphan 2.6.9/Full.1 v2.6.9
+git commit -m "Symfony Standard v2.6.9"
+
+Creating a branch like symfony-standard-v2.6.4 for every release
+is pointless as --orphan will yield exactly the same result.
+
+
+3. Distribution branch
+
+Create distribution-full-2.6.9 branch (purpose: to create a bulb)
+This is a temporary branch.
+
+git checkout -b distribution-full-2.6.9 2.6.9/Full.1
+
+4. Cherry pick all the branches:
+
+Verify:
+    git rerere remaining
+maybe this command can be used to automate cherry-picking?
+
+git cherry-pick 2.6.9/Gitignore
+git cherry-pick 2.6.9/Cleanup
+git cherry-pick 2.6.9/Vagrant
+git cherry-pick 2.6.9/Speedup
+git cherry-pick 2.6.9/Error404
+git cherry-pick 2.6.9/Db
+git cherry-pick 2.6.9/DoctrineFixturesBundle
+git cherry-pick 2.6.9/FOSUserBundle
+
+git cherry-pick 2.6.9/Behat
+git cherry-pick 2.6.9/BehatInitialization
+git cherry-pick 2.6.9/Travis
+
+
+git cherry-pick 2.6.9/StofDoctrineExtensionsBundle
+git cherry-pick 2.6.9/Phpspec
+git cherry-pick 2.6.9/JmsSerializerBundle
+
+
+git cherry-pick 2.6.9/DoctrineMigrationsBundle
+git cherry-pick 2.6.9/JMSDebuggingBundle
+
+git cherry-pick 2.6.9/KnpMenuBundle
+git cherry-pick 2.6.9/KnpPaginatorBundle
+
+git cherry-pick 2.6.9/BraincraftedBootstrapBundle
+
+
+5. Update dependencies:
+
+Remove bin directory:
+
+rm -rf bin
+rm composer.lock
+
+vagrant up
+vagrant ssh
+
+./initialize.bash
+
+sudo composer self-update
+composer update
+
+./reload.bash
+bin/behat
+
+6. Commit updated dependencies
+
+git snapshot "[STARTUP] Updated dependencies"
+
+Remember to commit app/config/parameters.yml file.
+
+7. Merge distribution-full-2.6.9 branch into 2.6.9/Full.1 branch with a bulb
+
+git checkout 2.6.9/Full.1
+git merge --no-ff distribution-full-2.6.9
+
+Merge commit should have the caption:
+
+SymfonyAppStartup 2.6.9.1
+
+
+8. Remove distribution branch:
+
+git branch -D distribution-full-2.6.9
+
+=============================================
+
+
+10. View steps:
+
+https://github.com/angular/angular-phonecat/compare/step-2...step-3
+
+11. Usefull commands
+
+git branch | grep 2.6.9
+git branch --no-merged | grep 2.6.9
+
+

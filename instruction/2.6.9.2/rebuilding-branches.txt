@@ -1,0 +1,69 @@
+Update from 2.6.4 to 2.6.9
+
+1. Update repo
+
+git checkout 2.7
+git fetch origin
+git rebase
+
+2. List branches to update
+
+git branch | grep 2.6.4
+
+2.6.4/Behat
+2.6.4/BehatInitialization
+2.6.4/BraincraftedBootstrapBundle
+2.6.4/Cleanup
+2.6.4/Db
+2.6.4/DoctrineFixturesBundle
+2.6.4/DoctrineMigrationsBundle
+2.6.4/Error404
+2.6.4/FOSUserBundle
+2.6.4/Gitignore
+2.6.4/Instruction
+2.6.4/JMSDebuggingBundle
+2.6.4/JmsSerializerBundle
+2.6.4/KnpMenuBundle
+2.6.4/KnpPaginatorBundle
+2.6.4/Phpspec
+2.6.4/Speedup
+2.6.4/StofDoctrineExtensionsBundle
+2.6.4/Travis
+2.6.4/Vagrant
+
+Caution: the contents of the branch:
+
+    2.6.4/Scripts
+
+was merget into branch
+
+    2.6.9/Vagrant
+
+3. Update branches
+
+./dist-update-one-branch.bash 2.6.4 2.6.9 Behat
+./dist-update-one-branch.bash 2.6.4 2.6.9 BehatInitialization
+./dist-update-one-branch.bash 2.6.4 2.6.9 BraincraftedBootstrapBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 Cleanup
+./dist-update-one-branch.bash 2.6.4 2.6.9 Db
+./dist-update-one-branch.bash 2.6.4 2.6.9 DoctrineFixturesBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 DoctrineMigrationsBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 Error404
+./dist-update-one-branch.bash 2.6.4 2.6.9 FOSUserBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 Gitignore
+./dist-update-one-branch.bash 2.6.4 2.6.9 Instruction
+./dist-update-one-branch.bash 2.6.4 2.6.9 JMSDebuggingBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 JmsSerializerBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 KnpMenuBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 KnpPaginatorBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 Phpspec
+./dist-update-one-branch.bash 2.6.4 2.6.9 Speedup
+./dist-update-one-branch.bash 2.6.4 2.6.9 StofDoctrineExtensionsBundle
+./dist-update-one-branch.bash 2.6.4 2.6.9 Travis
+./dist-update-one-branch.bash 2.6.4 2.6.9 Vagrant
+
+
+
+4. Remove branches
+
+git branch | grep 2.6.4 | xargs git branch -D
