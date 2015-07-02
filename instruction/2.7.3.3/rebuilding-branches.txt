@@ -1,0 +1,69 @@
+Update from 2.6.9 to 2.7.3
+
+1. Update repo
+
+git checkout 2.7
+git fetch origin
+git rebase
+
+2. List branches to update
+
+git branch | grep 2.6.9
+
+2.6.9/Behat
+2.6.9/BehatInitialization
+2.6.9/BraincraftedBootstrapBundle
+2.6.9/Cleanup
+2.6.9/Db
+2.6.9/DoctrineFixturesBundle
+2.6.9/DoctrineMigrationsBundle
+2.6.9/Error404
+2.6.9/FOSUserBundle
+2.6.9/Gitignore
+2.6.9/Instruction
+2.6.9/JMSDebuggingBundle
+2.6.9/JmsSerializerBundle
+2.6.9/KnpMenuBundle
+2.6.9/KnpPaginatorBundle
+2.6.9/Phpspec
+2.6.9/Speedup
+2.6.9/StofDoctrineExtensionsBundle
+2.6.9/Travis
+2.6.9/Vagrant
+
+Caution: the contents of the branch:
+
+    2.6.9/Scripts
+
+was merget into branch
+
+    2.6.9/Vagrant
+
+3. Update branches
+
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Behat
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 BehatInitialization
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 BraincraftedBootstrapBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Cleanup
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Db
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 DoctrineFixturesBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 DoctrineMigrationsBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Error404
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 FOSUserBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Gitignore
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Instruction
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 JMSDebuggingBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 JmsSerializerBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 KnpMenuBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 KnpPaginatorBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Phpspec
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Speedup
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 StofDoctrineExtensionsBundle
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Travis
+./tmp/2.7.3/dist-update-one-branch.bash 2.6.9 2.7.3 Vagrant
+
+
+
+4. Remove branches
+
+git branch | grep 2.7.3 | xargs git branch -D
