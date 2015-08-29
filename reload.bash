@@ -18,7 +18,7 @@ fi
 
 rm -rf /app/symfony2app/app/cache/*
 
-mysql -u root < "${BASEDIR}/00-extra/db/create-empty-database.sql"
+mysql -u root -ps-e-c-r-e-t-PA55w0rd < "${BASEDIR}/00-extra/db/create-empty-database.sql"
 php "${BASEDIR}/app/console" doctrine:schema:update --force
 php "${BASEDIR}/app/console" fos:user:create admin admin@example.net loremipsum --super-admin
 
