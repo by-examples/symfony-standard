@@ -2,8 +2,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-    config.vm.box = "symfony-v1.0.0"
-    config.vm.box_url = "http://boxes.gajdaw.pl/symfony/symfony-v1.0.0.box"
+    config.vm.box = "symfony-v2.0.2"
+    config.vm.box_url = "http://boxes.gajdaw.pl/symfony/symfony-v2.0.2.box"
 
     config.vm.hostname = "abc.example.net"
 
