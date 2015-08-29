@@ -28,7 +28,8 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "braincrafted/bootstrap-bundle": "~2.0",
         "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.10.*"
+        "jquery/jquery":  "1.10.*",
+        "friendsofsymfony/rest-bundle": "~1.7"
     },
     "repositories": [
         {
